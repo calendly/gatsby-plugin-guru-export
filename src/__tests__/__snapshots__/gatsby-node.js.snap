@@ -7,9 +7,13 @@ ExternalUrl: http://dummy.url/sample1
 "
 `;
 
-exports[`gatsby-plugin-guru-export onPostBuild exports 2`] = `
+exports[`gatsby-plugin-guru-export onPostBuild exports 2`] = `"<div>test</div>"`;
+
+exports[`gatsby-plugin-guru-export onPostBuild exports 3`] = `
 "Title: sample title 2
 ExternalId: 2
 ExternalUrl: http://dummy.url/sample2
 "
 `;
+
+exports[`gatsby-plugin-guru-export onPostBuild exports 4`] = `"<div>test</div>"`;

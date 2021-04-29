@@ -2,6 +2,6 @@
 !index.js
 node_modules/
 .DS_Store
-gatsby-node.js
-internals.js
+./gatsby-node.js
+./internals.js
 !src/*.js

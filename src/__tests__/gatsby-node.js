@@ -32,7 +32,8 @@ describe("gatsby-plugin-guru-export", () => {
                     id: 1,
                     title: "sample title",
                     description: "sample description",
-                    slug: 'sample1'
+                    slug: 'sample1',
+                    htmlBody: '<div>test</div>'
                   },
                 },
               },
@@ -42,7 +43,8 @@ describe("gatsby-plugin-guru-export", () => {
                     id: 2,
                     title: "sample title 2",
                     description: "sample description 2",
-                    slug: 'sample2'
+                    slug: 'sample2',
+                    htmlBody: '<div>test</div>'
                   },
                 },
               },
@@ -62,6 +64,7 @@ describe("gatsby-plugin-guru-export", () => {
                 title
                 description
                 slug
+                htmlBody
               }
             }
           }
@@ -82,22 +85,30 @@ describe("gatsby-plugin-guru-export", () => {
               ExternalId: "id",
               ExternalUrl: (serializedData) =>
                 `${serializedData.site.siteMetadata.siteUrl}${serializedData.slug}`,
+              Body: 'htmlBody'
             },
           },
         ],
       };
       await onPostBuild({ graphql }, options);
 
-      expect(fs.writeFile).toHaveBeenCalledTimes(2);
+      expect(fs.writeFile).toHaveBeenCalledTimes(4);
 
       const call0 = fs.writeFile.mock.calls[0];
       const call1 = fs.writeFile.mock.calls[1];
 
       expect(call0[0]).toEqual(path.join(`public/guru`, `card0.yaml`));
       expect(call0[1]).toMatchSnapshot();
-
-      expect(call1[0]).toEqual(path.join(`public/guru`, `card1.yaml`));
+      expect(call1[0]).toEqual(path.join(`public/guru`, `card0.html`));
       expect(call1[1]).toMatchSnapshot();
+
+      const call2 = fs.writeFile.mock.calls[2];
+      const call3 = fs.writeFile.mock.calls[3];
+
+      expect(call2[0]).toEqual(path.join(`public/guru`, `card1.yaml`));
+      expect(call2[1]).toMatchSnapshot();
+      expect(call3[0]).toEqual(path.join(`public/guru`, `card1.html`));
+      expect(call3[1]).toMatchSnapshot();
     });
   });
 });

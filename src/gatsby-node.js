@@ -54,12 +54,17 @@ exports.onPostBuild = async ({ graphql }, pluginOptions) => {
         }
         return acc;
       }, {})
+      const outputBody = outputData.Body;
+      delete outputData.Body;
 
-      const yamlResult = yaml.dump(outputData);
-      const fileName = `card${i}.yaml`
-      const outputFile = path.join(outputPath, fileName);
+      const outputYaml = yaml.dump(outputData);
+      const yamlFile = `card${i}.yaml`
+      const yamlOutputFile = path.join(outputPath, yamlFile);
+      await fs.writeFile(yamlOutputFile, outputYaml);
 
-      await fs.writeFile(outputFile, yamlResult);
+      const bodyFile = `card${i}.html`
+      const bodyOutputFile = path.join(outputPath, bodyFile);
+      await fs.writeFile(bodyOutputFile, outputBody);
     }
   });
 

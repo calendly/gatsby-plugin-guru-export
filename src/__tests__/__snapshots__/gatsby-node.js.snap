@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`gatsby-plugin-guru-export onPostBuild exports 1`] = `
+"Title: sample title
+ExternalId: 1
+ExternalUrl: http://dummy.url/sample1
+"
+`;
+
+exports[`gatsby-plugin-guru-export onPostBuild exports 2`] = `
+"Title: sample title 2
+ExternalId: 2
+ExternalUrl: http://dummy.url/sample2
+"
+`;

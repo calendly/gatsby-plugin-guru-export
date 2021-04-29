@@ -1,0 +1,7 @@
+/*.js
+!index.js
+node_modules/
+.DS_Store
+gatsby-node.js
+internals.js
+!src/*.js

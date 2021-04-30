@@ -38,10 +38,7 @@ exports.onPostBuild = async ({ graphql }, pluginOptions) => {
 
     const feedData = serialize({ query });
     const outputPath = path.join(publicPath, output);
-    const outputDir = path.dirname(outputPath);
-    if (!(await fs.exists(outputDir))) {
-      await fs.mkdirp(outputDir);
-    }
+    await fs.ensureDir(outputPath);
 
     for (let i = 0; i < feedData.length; i++) {
       const data = feedData[i];

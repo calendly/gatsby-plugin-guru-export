@@ -1,7 +1,7 @@
 {
   "name": "gatsby-plugin-guru-export",
   "description": "Creates an Guru export for your Gatsby site.",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "author": "Sean Kovacs <s.kovacs@calendly.com>",
   "bugs": {
     "url": "https://github.com/calendly/gatsby-plugin-guru-export"
